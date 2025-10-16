@@ -1,33 +1,130 @@
-add it in this :<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Figma Replica - Custom Breakpoints</title>
+    <style>
+      .container {
+        width: 31.75px;
+        height: 70px;
+        background-color: #ffff;
+        position: relative;
+      }
 
-    <!-- Tailwind via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+      .head {
+        position: absolute;
+        width: 5px;
+        height: 9.95px;
+        left: 12.34px;
+        background-color: black;
+      }
 
-    <!-- Custom Tailwind config inline -->
-    <script>
-      tailwind.config = {
-        theme: {
-          screens: {
-            tablet: "376px",
-            desktop: "801px",
-          },
-          extend: {},
-        },
-      };
-    </script>
+      .body {
+        position: absolute;
+        top: 15px;
+        left: 17.34px;
+        height: 30px;
+        width: 5px;
+        background-color: black;
+      }
+      .right-leg{
+        position: absolute;
+        top: 45px;
+        left: 20px;
+        height: 25px;
+        width: 5px;
+        background-color: black;
+      }
+      
+      .left-leg-container{
+        position: absolute;
+        height: 25px;
+        width: 9.67px;
+        background-color: #ffff;
+        top: 45px;
+        left: 2.75px;
+        overflow: hidden;
+
+
+      }
+
+      .left-leg{
+        position: absolute;
+
+        width: 5px;
+        top: -5px;
+        background-color: black;
+        height: 35px;
+        left: 2.8px;
+        
+
+        transform: rotate(8deg); /* rotates 45 degrees */
+        transform-origin: center; /* rotation pivot point */
+
+      }
+
+      .left-hand-container{
+        position: absolute;
+        width:12.57px;
+        height: 20.89px;
+        background-color: #ffff;
+        top: 15px;
+        left: 0px;
+        overflow: hidden;
+      }
+      .left-hand{
+        position: absolute;
+        width: 5px;
+        background-color: black;
+        height: 25px;
+        left: 5px;
+        top: -5px;
+
+        transform: rotate(18deg); /* rotates 45 degrees */
+        transform-origin: center; /* rotation pivot point */
+      }
+
+      .right-hand-container{
+        position: absolute;
+        width: 9.41px;
+        height: 30px;
+        background-color: #ffff;
+        top: 15px;
+        right: 0px;
+        overflow: hidden;
+      }
+
+      .right-hand{
+        position: absolute;
+        width: 5px;
+        top: 0px;
+        right: 6.7px;
+        background-color: black;
+        height: 20px;
+        
+        transform: rotate(140deg); /* rotates 45 degrees */
+        transform-origin: center; /* rotation pivot point */
+      }
+
+
+    </style>
   </head>
-
   <body>
-     
-     
-    <!-- Main container -->
-    
+    <div class="container">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="right-leg"></div>
+      <div class="left-leg-container">
+        <div class="left-leg"></div>
+      </div>
+      <div class="left-hand-container">
+        <div class="left-hand"></div>
+      </div>
+
+      <div class="right-hand-container">
+        <div class="right-hand"> </div>
+
+      </div>
+    </div>
   </body>
 </html>
-
-for tablet and desktop i will do myself
