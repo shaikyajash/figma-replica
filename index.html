@@ -1034,15 +1034,123 @@
       <div class="self-stretch flex justify-start items-end gap-10">
 
         <!-- Logo -->
-        <div class="flex justify-start items-end gap-[8.97px]">
-          <div data-svg-wrapper class="relative">
-            <svg width="32" height="71" viewBox="0 0 32 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M22.3379 22.2544L31.751 33.3423L27.9258 36.5796L22.3379 29.98V45.6675H24.8379V70.6675H19.8379V45.6675H17.3379V15.6675H22.3379V22.2544ZM12.4248 45.6665L7.83789 70.6665H2.75L7.33789 45.6665H12.4248ZM4.6748 36.5552L0 34.7798L7.22461 15.6675H12.5752L4.6748 36.5552ZM17.3389 10.6177H12.3389V0.66748H17.3389V10.6177Z"
-                fill="black" />
-            </svg>
-          </div>
-        </div>
+<div class="flex justify-start items-end gap-[8.97px]">
+  <div class="relative">
+    <style>
+      .container {
+        width: 31.75px;
+        height: 70px;
+        background-color: #ffff;
+        position: relative;
+      }
+
+      .head {
+        position: absolute;
+        width: 5px;
+        height: 9.95px;
+        left: 12.34px;
+        background-color: black;
+      }
+
+      .body {
+        position: absolute;
+        top: 15px;
+        left: 17.34px;
+        height: 30px;
+        width: 5px;
+        background-color: black;
+      }
+
+      .right-leg {
+        position: absolute;
+        top: 45px;
+        left: 20px;
+        height: 25px;
+        width: 5px;
+        background-color: black;
+      }
+
+      .left-leg-container {
+        position: absolute;
+        height: 25px;
+        width: 9.67px;
+        background-color: #ffff;
+        top: 45px;
+        left: 2.75px;
+        overflow: hidden;
+      }
+
+      .left-leg {
+        position: absolute;
+        width: 5px;
+        top: -5px;
+        background-color: black;
+        height: 35px;
+        left: 2.8px;
+        transform: rotate(8deg);
+        transform-origin: center;
+      }
+
+      .left-hand-container {
+        position: absolute;
+        width: 12.57px;
+        height: 20.89px;
+        background-color: #ffff;
+        top: 15px;
+        left: 0px;
+        overflow: hidden;
+      }
+
+      .left-hand {
+        position: absolute;
+        width: 5px;
+        background-color: black;
+        height: 25px;
+        left: 5px;
+        top: -5px;
+        transform: rotate(18deg);
+        transform-origin: center;
+      }
+
+      .right-hand-container {
+        position: absolute;
+        width: 9.41px;
+        height: 30px;
+        background-color: #ffff;
+        top: 15px;
+        right: 0px;
+        overflow: hidden;
+      }
+
+      .right-hand {
+        position: absolute;
+        width: 5px;
+        top: 0px;
+        right: 6.7px;
+        background-color: black;
+        height: 20px;
+        transform: rotate(140deg);
+        transform-origin: center;
+      }
+    </style>
+
+    <div class="container">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="right-leg"></div>
+      <div class="left-leg-container">
+        <div class="left-leg"></div>
+      </div>
+      <div class="left-hand-container">
+        <div class="left-hand"></div>
+      </div>
+      <div class="right-hand-container">
+        <div class="right-hand"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <!-- Copyright Info -->
         <div class="flex-1 flex justify-start items-center gap-4">
