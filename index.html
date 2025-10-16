@@ -33,7 +33,7 @@
     }
 
     /* Mobile: up to 799px */
-    @media (max-width: 799px) {
+    @media (max-width: 375px) {
       #navbar {
         max-width: 100vw;
         width: 100%;
@@ -50,7 +50,7 @@
 <body class="bg-gray-50 min-h-screen relative w-full">
   <!-- Mobile Navbar (hidden on tablet and above) -->
   <div id="navbar" data-nav="closed"
-    class="tablet:hidden w-full max-w-[799px] h-[78px] left-0 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 z-50">
+    class="tablet:hidden w-full max-w-[375px] h-[78px] left-1/2 -translate-x-1/2 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 z-50">
     <!-- Top Bar -->
     <div class="self-stretch px-5 pt-5 pb-[50px] bg-white inline-flex justify-between items-start">
       <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
@@ -93,15 +93,18 @@
       </div>
 
       <!-- Learn More Button -->
-      <div data-state="Default"
-        class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5">
-        <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
-          Learn More
-        </div>
-        <div class="w-[7px] self-stretch flex justify-start items-center gap-2.5">
-          <div class="w-1.5 h-1.5 bg-white"></div>
-        </div>
-      </div>
+      <!-- Learn More Button -->
+<div data-state="Default"
+  class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5">
+  <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
+    Learn More
+  </div>
+  <div data-svg-wrapper class="flex justify-start items-center">
+    <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.01037 4.98773V1.04616L5.64939 1.08575L0.735155 6.00563L0 5.27048L4.91423 0.356246L4.96513 0.995266H1.0066V-0.00567627L6 0.00563382V4.98773H5.01037Z" fill="white"/>
+    </svg>
+  </div>
+</div>
     </div>
   </div>
 
