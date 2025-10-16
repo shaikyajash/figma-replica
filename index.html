@@ -52,16 +52,21 @@
   <div id="navbar" data-nav="closed"
     class="tablet:hidden w-full max-w-[375px] h-[78px] left-1/2 -translate-x-1/2 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 z-50">
     <!-- Top Bar -->
-    <div class="self-stretch px-5 pt-5 pb-[50px] bg-white inline-flex justify-between items-start">
-      <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
+    <div class="self-stretch pt-5 pb-[50px] px-5 bg-white inline-flex justify-between items-start">
+      <div class="justify-center flex flex-col text-black text-[30px] font-medium font-['DM_Sans'] leading-9">
         Area
       </div>
 
       <!-- Burger Icon -->
-      <button id="burgerBtn" data-svg-wrapper class="relative">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button id="burgerBtn" class="w-6 h-6 relative overflow-hidden">
+        <!-- Burger Icon (default) -->
+        <svg id="burgerIcon" class="w-3.5 h-3.5 left-[5px] top-[5px] absolute" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3 5.6665H21V7.6665H3V5.6665ZM3 10.6665H21V12.6665H3V10.6665ZM3 15.6665H21V17.6665H3V15.6665Z"
             fill="black" />
+        </svg>
+        <!-- Close Icon (hidden by default) -->
+        <svg id="closeIcon" class="hidden w-3.5 h-3.5 left-[5px] top-[5px] absolute" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.46 7L14 12.54V14H12.54L7 8.46L1.46 14H0V12.54L5.54 7L0 1.46V0H1.46L7 5.54L12.54 0H14V1.46L8.46 7Z" fill="black"/>
         </svg>
       </button>
     </div>
@@ -93,18 +98,17 @@
       </div>
 
       <!-- Learn More Button -->
-      <!-- Learn More Button -->
-<div data-state="Default"
-  class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5">
-  <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
-    Learn More
-  </div>
-  <div data-svg-wrapper class="flex justify-start items-center">
-    <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5.01037 4.98773V1.04616L5.64939 1.08575L0.735155 6.00563L0 5.27048L4.91423 0.356246L4.96513 0.995266H1.0066V-0.00567627L6 0.00563382V4.98773H5.01037Z" fill="white"/>
-    </svg>
-  </div>
-</div>
+      <div data-state="Default"
+        class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5">
+        <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
+          Learn More
+        </div>
+        <div data-svg-wrapper class="flex justify-start items-center">
+          <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.01037 4.98773V1.04616L5.64939 1.08575L0.735155 6.00563L0 5.27048L4.91423 0.356246L4.96513 0.995266H1.0066V-0.00567627L6 0.00563382V4.98773H5.01037Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1209,11 +1213,17 @@
     const burgerBtn = document.getElementById("burgerBtn");
     const menu = document.getElementById("menu");
     const navbar = document.getElementById("navbar");
+    const burgerIcon = document.getElementById("burgerIcon");
+    const closeIcon = document.getElementById("closeIcon");
 
     burgerBtn.addEventListener("click", () => {
       const isOpen = navbar.getAttribute("data-nav") === "open";
       navbar.setAttribute("data-nav", isOpen ? "closed" : "open");
       menu.classList.toggle("hidden");
+
+      // Toggle icons
+      burgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
 
       // Toggle height
       if (isOpen) {
