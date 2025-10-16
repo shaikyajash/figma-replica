@@ -50,7 +50,7 @@
 <body class="bg-gray-50 min-h-screen relative w-full">
   <!-- Mobile Navbar (hidden on tablet and above) -->
   <div id="navbar" data-nav="closed"
-    class="tablet:hidden w-full max-w-[375px] h-[78px] left-1/2 -translate-x-1/2 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 z-50">
+    class="tablet:hidden w-full max-w-[375px] h-[78px] left-1/2 -translate-x-1/2 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-500 ease-in-out z-50">
     <!-- Top Bar -->
     <div class="self-stretch pt-5 pb-[50px] px-5 bg-white inline-flex justify-between items-start">
       <div class="justify-center flex flex-col text-black text-[30px] font-medium font-['DM_Sans'] leading-9">
@@ -60,37 +60,37 @@
       <!-- Burger Icon -->
       <button id="burgerBtn" class="w-6 h-6 relative overflow-hidden">
          <!-- Burger Icon (default) -->
-  <svg id="burgerIcon" class="w-[18px] h-[13px] absolute left-[3px] top-[5.5px]" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg id="burgerIcon" class="w-[18px] h-[13px] absolute left-[3px] top-[5.5px] transition-all duration-300 ease-in-out" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0.666504H18V2.6665H0V0.666504ZM0 5.6665H18V7.6665H0V5.6665ZM0 10.6665H18V12.6665H0V10.6665Z" fill="black"/>
   </svg>
 
         <!-- Close Icon (hidden by default) -->
-        <svg id="closeIcon" class="hidden w-3.5 h-3.5 left-[5px] top-[5px] absolute" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="closeIcon" class="w-3.5 h-3.5 left-[5px] top-[5px] absolute opacity-0 scale-0 transition-all duration-300 ease-in-out" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.46 7L14 12.54V14H12.54L7 8.46L1.46 14H0V12.54L5.54 7L0 1.46V0H1.46L7 5.54L12.54 0H14V1.46L8.46 7Z" fill="black"/>
         </svg>
       </button>
     </div>
 
     <!-- Dropdown Menu -->
-    <div id="menu" class="hidden self-stretch px-5 pt-2 pb-8 flex flex-col justify-center items-start gap-[50px]">
+    <div id="menu" class="self-stretch px-5 pt-2 pb-8 flex flex-col justify-center items-start gap-[50px] max-h-0 opacity-0 transition-all duration-500 ease-in-out overflow-hidden">
       <!-- Menu Items -->
       <div class="self-stretch flex flex-col justify-start items-start">
-        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5 opacity-0 -translate-x-4 transition-all duration-300 ease-out delay-100">
           <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
             Benefits
           </div>
         </div>
-        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5 opacity-0 -translate-x-4 transition-all duration-300 ease-out delay-150">
           <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
             Specifications
           </div>
         </div>
-        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5 opacity-0 -translate-x-4 transition-all duration-300 ease-out delay-200">
           <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
             How-to
           </div>
         </div>
-        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5 opacity-0 -translate-x-4 transition-all duration-300 ease-out delay-300">
           <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
             Contact Us
           </div>
@@ -1215,21 +1215,55 @@
     const navbar = document.getElementById("navbar");
     const burgerIcon = document.getElementById("burgerIcon");
     const closeIcon = document.getElementById("closeIcon");
+    const menuItems = menu.querySelectorAll('.self-stretch > div');
 
     burgerBtn.addEventListener("click", () => {
       const isOpen = navbar.getAttribute("data-nav") === "open";
-      navbar.setAttribute("data-nav", isOpen ? "closed" : "open");
-      menu.classList.toggle("hidden");
-
-      // Toggle icons
-      burgerIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
-
-      // Toggle height
+      
       if (isOpen) {
-        navbar.style.height = "78px";
+        // Closing animation
+        navbar.setAttribute("data-nav", "closed");
+        menu.classList.remove("max-h-[600px]", "opacity-100");
+        menu.classList.add("max-h-0", "opacity-0");
+        
+        // Reset menu items
+        menuItems.forEach(item => {
+          item.classList.remove("opacity-100", "translate-x-0");
+          item.classList.add("opacity-0", "-translate-x-4");
+        });
+        
+        // Toggle icons
+        burgerIcon.classList.remove("opacity-0", "scale-0");
+        burgerIcon.classList.add("opacity-100", "scale-100");
+        closeIcon.classList.remove("opacity-100", "scale-100");
+        closeIcon.classList.add("opacity-0", "scale-0");
+        
+        setTimeout(() => {
+          navbar.classList.remove("h-auto");
+          navbar.classList.add("h-[78px]");
+        }, 100);
       } else {
-        navbar.style.height = "auto";
+        // Opening animation
+        navbar.setAttribute("data-nav", "open");
+        navbar.classList.remove("h-[78px]");
+        navbar.classList.add("h-auto");
+        
+        setTimeout(() => {
+          menu.classList.remove("max-h-0", "opacity-0");
+          menu.classList.add("max-h-[600px]", "opacity-100");
+          
+          // Animate menu items
+          menuItems.forEach(item => {
+            item.classList.remove("opacity-0", "-translate-x-4");
+            item.classList.add("opacity-100", "translate-x-0");
+          });
+          
+          // Toggle icons
+          burgerIcon.classList.remove("opacity-100", "scale-100");
+          burgerIcon.classList.add("opacity-0", "scale-0");
+          closeIcon.classList.remove("opacity-0", "scale-0");
+          closeIcon.classList.add("opacity-100", "scale-100");
+        }, 50);
       }
     });
   </script>
