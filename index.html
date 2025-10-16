@@ -105,27 +105,47 @@
     </div>
   </div>
 
-  <!-- Tablet and Desktop NavBar (hidden on mobile) -->
-  <div
-    class="hidden tablet:flex w-full h-[148px] max-w-[1500px] pt-5 pb-20 mx-auto px-5 tablet:px-10 desktop:px-20 justify-between items-center">
-    <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
-      Area
+ <!-- Tablet and Desktop NavBar (hidden on mobile) -->
+  <div class="desktop:max-w-[1280px] desktop:px-[40px] desktop:mx-auto tablet:mx-auto tablet:max-w-[800px] tablet:px-[40px] ">
+
+ 
+<div class="hidden tablet:flex w-full h-[148px] max-w-[1500px] pt-5 pb-20 mx-auto justify-between items-center relative">
+  
+  <!-- Logo -->
+  <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
+    Area
+  </div>
+  
+  <!-- Centered Navigation Menu -->
+  <div class="fixed w-[399px] h-[60px] z-50 left-1/2 -translate-x-1/2 px-6 py-5 bg-white/40 rounded-[100px] backdrop-blur-[15px] inline-flex justify-start items-center gap-[27px] overflow-hidden text-nowrap">
+    <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight cursor-pointer hover:text-[#485C11] transition-colors">
+      Benefits
     </div>
-    <div data-state="Default"
-      class="px-[22px] py-3.5 bg-lime-800 rounded-full flex justify-center items-center gap-0.5 cursor-pointer hover:bg-lime-900 transition-colors">
-      <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
-        Learn More
-      </div>
-      <div data-svg-wrapper class="flex items-center justify-center">
-        <svg width="7" height="20" viewBox="0 0 7 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M5.01037 11.9877V8.04618L5.64939 8.08576L0.735155 13.0056L0 12.2705L4.91423 7.35626L4.96513 7.99528H1.0066V6.99434L6 7.00565V11.9877H5.01037Z"
-            fill="white" />
-        </svg>
-      </div>
+    <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight cursor-pointer hover:text-[#485C11] transition-colors">
+      Specifications
+    </div>
+    <div class="text-center  justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight cursor-pointer hover:text-[#485C11] transition-colors">
+      How-to
+    </div>
+    <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight cursor-pointer hover:text-[#485C11] transition-colors">
+      Contact Us
     </div>
   </div>
-
+  
+  <!-- Learn More Button -->
+<div data-state="Default" class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5 cursor-pointer hover:bg-lime-900 transition-colors">
+  <div class="text-center text-white text-sm font-bold font-['DM_Sans'] leading-[19.6px]">
+    Learn More
+  </div>
+  <div data-svg-wrapper>
+    <svg width="7" height="20" viewBox="0 0 7 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.01037 11.9877V8.04618L5.64939 8.08576L0.735155 13.0056L0 12.2705L4.91423 7.35626L4.96513 7.99528H1.0066V6.99434L6 7.00565V11.9877H5.01037Z" fill="white"/>
+    </svg>
+  </div>
+</div>
+  
+</div>
+ </div>
 
   <!-- Main Container for desktop and tablet -->
   
