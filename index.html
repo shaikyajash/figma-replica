@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Figma Navbar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Crimson+Text:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        screens: {
+          tablet: "800px",
+          desktop: "1280px",
+        },
+        extend: {
+          fontFamily: {
+            "dm-sans": ['"DM Sans"', "sans-serif"],
+            "crimson-text": ['"Crimson Text"', "serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "DM Sans", sans-serif;
+    }
+
+    /* Mobile: up to 799px */
+    @media (max-width: 799px) {
+      #navbar {
+        max-width: 100vw;
+        width: 100%;
+      }
+    }
+
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen relative w-full">
+  <!-- Mobile Navbar (hidden on tablet and above) -->
+  <div id="navbar" data-nav="closed"
+    class="tablet:hidden w-full max-w-[799px] h-[78px] left-0 top-0 absolute bg-white rounded-bl-[20px] rounded-br-[20px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.05)] inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 z-50">
+    <!-- Top Bar -->
+    <div class="self-stretch px-5 pt-5 pb-[50px] bg-white inline-flex justify-between items-start">
+      <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
+        Area
+      </div>
+
+      <!-- Burger Icon -->
+      <button id="burgerBtn" data-svg-wrapper class="relative">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 5.6665H21V7.6665H3V5.6665ZM3 10.6665H21V12.6665H3V10.6665ZM3 15.6665H21V17.6665H3V15.6665Z"
+            fill="black" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div id="menu" class="hidden self-stretch px-5 pt-2 pb-8 flex flex-col justify-center items-start gap-[50px]">
+      <!-- Menu Items -->
+      <div class="self-stretch flex flex-col justify-start items-start">
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+          <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
+            Benefits
+          </div>
+        </div>
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+          <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
+            Specifications
+          </div>
+        </div>
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+          <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
+            How-to
+          </div>
+        </div>
+        <div class="self-stretch py-[30px] border-t border-gray-200 inline-flex justify-start items-center gap-2.5">
+          <div class="text-center justify-start text-black text-sm font-bold font-['DM_Sans'] leading-tight">
+            Contact Us
+          </div>
+        </div>
+      </div>
+
+      <!-- Learn More Button -->
+      <div data-state="Default"
+        class="px-[22px] py-3.5 bg-lime-800 rounded-full inline-flex justify-center items-center gap-0.5">
+        <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
+          Learn More
+        </div>
+        <div class="w-[7px] self-stretch flex justify-start items-center gap-2.5">
+          <div class="w-1.5 h-1.5 bg-white"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tablet and Desktop NavBar (hidden on mobile) -->
+  <div
+    class="hidden tablet:flex w-full h-[148px] max-w-[1500px] pt-5 pb-20 mx-auto px-5 tablet:px-10 desktop:px-20 justify-between items-center">
+    <div class="justify-center text-black text-3xl font-medium font-['DM_Sans'] leading-9">
+      Area
+    </div>
+    <div data-state="Default"
+      class="px-[22px] py-3.5 bg-lime-800 rounded-full flex justify-center items-center gap-0.5 cursor-pointer hover:bg-lime-900 transition-colors">
+      <div class="text-center justify-start text-white text-sm font-bold font-['DM_Sans'] leading-tight">
+        Learn More
+      </div>
+      <div data-svg-wrapper class="flex items-center justify-center">
+        <svg width="7" height="20" viewBox="0 0 7 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.01037 11.9877V8.04618L5.64939 8.08576L0.735155 13.0056L0 12.2705L4.91423 7.35626L4.96513 7.99528H1.0066V6.99434L6 7.00565V11.9877H5.01037Z"
+            fill="white" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container for desktop and tablet -->
+
+  <div
+    class="px-4 pt-[120px] mx-auto tablet:px-[40px] tablet:pt-[0px] tablet:mx-auto tablet:max-w-[800px] desktop:px-[40px] desktop:max-w-[1500px] desktop:pt-[0px] desktop:mx-auto">
+    <!-- Hero Text  -->
+    <div
+      class="self-stretch text-center justify-start text-black text-[76px] tablet:text-[140px] desktop:text-[160px] font-normal font-['Crimson_Text'] leading-[64.60px] tablet:leading-[112px] desktop:leading-[136px] desktop:text-nowrap">
+      Browse everything.
+    </div>
+    <!-- Hero Image div -->
+
+    <div class="desktop:overflow-hidden overflow-hidden">
+      <!-- Hero Image -->
+
+      <div
+        class="self-stretch h-[362px] relative bg-[#8E9C78] rounded-[30px] overflow-visible mt-[120px] desktop:mt-[240px] tablet:mt-[140px]">
+        <!-- Mobile Device Frame -->
+        <div
+          class="tablet:hidden w-[270px] h-[541.82px] left-1/2 -translate-x-1/2 -top-[48.91px] absolute bg-black shadow-[0px_-2.34px_11.71px_rgba(0,0,0,0.10)] overflow-hidden rounded-[34.66px] outline outline-1 outline-[#929292] outline-offset-[-1px]">
+          <div
+            class="w-[248.11px] h-[521.76px] left-[10.95px] top-[10.03px] absolute bg-black/25 overflow-hidden rounded-[27.36px]"
+            style="
+                background-image: url(https://placehold.co/248x522);
+                background-size: cover;
+                background-position: center;
+              ">
+            <!-- Mobile Status Bar -->
+            <div class="w-[207.24px] h-[22.19px] left-[20.20px] top-[8.06px] absolute">
+              <!-- Dynamic Island -->
+              <div data-svg-wrapper class="left-[51.78px] top-0 absolute">
+                <svg width="95" height="23" viewBox="0 0 95 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0.925293 11.2789C0.925293 5.15006 5.89371 0.181641 12.0226 0.181641H83.8906C90.0194 0.181641 94.9878 5.15006 94.9878 11.2789C94.9878 17.4078 90.0194 22.3762 83.8906 22.3762H12.0226C5.89372 22.3762 0.925293 17.4078 0.925293 11.2789Z"
+                    fill="black" />
+                </svg>
+              </div>
+              <!-- Signal Icon -->
+              <div data-svg-wrapper class="left-[0.64px] top-[7.38px] absolute">
+                <svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.44186 0.557007C3.81058 0.557007 4.16408 0.626353 4.50236 0.765047C4.84402 0.900357 5.15016 1.11685 5.42078 1.41454C5.6914 1.70884 5.90451 2.09278 6.06012 2.56637C6.21573 3.03995 6.29353 3.61333 6.29353 4.2865V4.29665C6.29353 5.12205 6.17852 5.82904 5.94849 6.41764C5.71846 7.00286 5.38695 7.45277 4.95396 7.76737C4.52435 8.07858 4.00678 8.23419 3.40127 8.23419C2.96828 8.23419 2.57757 8.15469 2.22914 7.9957C1.8841 7.83671 1.59657 7.61683 1.36654 7.33606C1.13651 7.05529 0.980903 6.73224 0.899717 6.3669L0.884495 6.30601H2.01603L2.03633 6.35675C2.10398 6.54281 2.20208 6.70349 2.33063 6.8388C2.45917 6.97411 2.61309 7.08067 2.79237 7.15847C2.97166 7.23289 3.17632 7.2701 3.40634 7.2701C3.81566 7.2701 4.14886 7.15001 4.40595 6.90984C4.66642 6.66628 4.86093 6.34322 4.98948 5.94067C5.11802 5.53813 5.19075 5.09498 5.20767 4.61125C5.21105 4.56051 5.21274 4.51146 5.21274 4.4641C5.21274 4.41674 5.21274 4.37107 5.21274 4.3271L4.98948 3.10423C4.98948 2.80654 4.92013 2.53761 4.78144 2.29744C4.64613 2.05726 4.46177 1.86614 4.22836 1.72406C3.99833 1.58198 3.73955 1.51095 3.45201 1.51095C3.16786 1.51095 2.90908 1.58029 2.67567 1.71899C2.44564 1.85768 2.26128 2.04542 2.12259 2.28222C1.98389 2.51563 1.91455 2.77948 1.91455 3.07378V3.08393C1.91455 3.38161 1.98051 3.64716 2.11244 3.88057C2.24437 4.11398 2.42534 4.29834 2.65537 4.43365C2.8854 4.56558 3.14587 4.63154 3.43679 4.63154C3.73109 4.63154 3.99495 4.56558 4.22836 4.43365C4.46177 4.30173 4.64613 4.12244 4.78144 3.89579C4.92013 3.66577 4.98948 3.4036 4.98948 3.1093V3.10423H5.28885V4.43873H5.11126C5.02331 4.63493 4.89138 4.8176 4.71547 4.98673C4.53957 5.15587 4.32307 5.29287 4.06598 5.39774C3.81228 5.49922 3.51967 5.54996 3.18816 5.54996C2.72472 5.54996 2.31202 5.4451 1.95007 5.23537C1.58811 5.02225 1.30396 4.73303 1.09761 4.36769C0.89126 3.99897 0.788086 3.5812 0.788086 3.11438V3.10423C0.788086 2.61373 0.901408 2.17735 1.12805 1.7951C1.35808 1.40946 1.67268 1.10671 2.07184 0.886826C2.47439 0.666947 2.93107 0.557007 3.44186 0.557007Z"
+                    fill="white" />
+                  <path
+                    d="M8.34369 7.05191C8.13396 7.05191 7.95636 6.97918 7.8109 6.83372C7.66883 6.68826 7.59779 6.51405 7.59779 6.31109C7.59779 6.10136 7.66883 5.92545 7.8109 5.78338C7.95636 5.6413 8.13396 5.57026 8.34369 5.57026C8.5568 5.57026 8.7344 5.6413 8.87647 5.78338C9.01855 5.92545 9.08959 6.10136 9.08959 6.31109C9.08959 6.51405 9.01855 6.68826 8.87647 6.83372C8.7344 6.97918 8.5568 7.05191 8.34369 7.05191ZM8.34369 3.21586C8.13396 3.21586 7.95636 3.14313 7.8109 2.99767C7.66883 2.85221 7.59779 2.678 7.59779 2.47503C7.59779 2.2653 7.66883 2.0894 7.8109 1.94732C7.95636 1.80525 8.13396 1.73421 8.34369 1.73421C8.5568 1.73421 8.7344 1.80525 8.87647 1.94732C9.01855 2.0894 9.08959 2.2653 9.08959 2.47503C9.08959 2.678 9.01855 2.85221 8.87647 2.99767C8.7344 3.14313 8.5568 3.21586 8.34369 3.21586Z"
+                    fill="white" />
+                  <path
+                    d="M13.9255 8.05659V6.60539H10.3533V5.63623C10.5461 5.30471 10.7423 4.97151 10.9419 4.63662C11.1448 4.30173 11.3478 3.96683 11.5508 3.63194C11.7571 3.29704 11.9634 2.96723 12.1698 2.64248C12.3761 2.31435 12.5825 1.9913 12.7888 1.67332C12.9952 1.35196 13.1982 1.03905 13.3977 0.734602H15.0265V5.63623H16.0363V6.60539H15.0265V8.05659H13.9255ZM11.4493 5.65652H13.9407V1.69869H13.8747C13.7157 1.93548 13.555 2.18073 13.3927 2.43444C13.2303 2.68476 13.0645 2.94185 12.8954 3.20571C12.7296 3.46957 12.5639 3.73511 12.3981 4.00235C12.2324 4.26959 12.07 4.53683 11.911 4.80407C11.752 5.06792 11.5981 5.32839 11.4493 5.58548V5.65652Z"
+                    fill="white" />
+                  <path
+                    d="M18.8932 8.05659V1.90673H18.8121L16.9701 3.22093V2.10462L18.8983 0.734602H20.0349V8.05659H18.8932Z"
+                    fill="white" />
+                </svg>
+              </div>
+              <!-- Battery & Network Icons -->
+              <div data-svg-wrapper class="left-[192.35px] top-[8.45px] absolute">
+                <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M4.72168 1.69144C5.3053 1.69144 5.77819 2.16449 5.77832 2.74808V5.91898C5.77832 6.50267 5.30538 6.97562 4.72168 6.97562H2.6084C2.0247 6.97562 1.55176 6.50267 1.55176 5.91898V2.74808C1.55189 2.16449 2.02478 1.69144 2.6084 1.69144H4.72168Z"
+                    fill="white" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12.333 0.635773C13.3835 0.635971 14.2353 1.48858 14.2354 2.53909V6.13284L14.2256 6.32718C14.1344 7.22226 13.4225 7.93454 12.5273 8.02542L12.333 8.03519H2.39844L2.2041 8.02542C1.3089 7.93458 0.597068 7.22227 0.505859 6.32718L0.496094 6.13284V2.53909C0.496118 1.48847 1.34781 0.635797 2.39844 0.635773H12.333ZM2.39844 1.27054C1.69803 1.27056 1.12991 1.83869 1.12988 2.53909V6.13284C1.13031 6.8329 1.69828 7.4004 2.39844 7.40042H12.333C13.033 7.40022 13.6011 6.8328 13.6016 6.13284V2.53909C13.6015 1.8388 13.0333 1.27074 12.333 1.27054H2.39844Z"
+                    fill="white" />
+                  <path
+                    d="M14.752 2.30765C15.1021 2.30765 15.3856 2.59137 15.3857 2.94144V5.69827C15.3857 6.04845 15.1021 6.33206 14.752 6.33206H14.541V2.30765H14.752Z"
+                    fill="white" />
+                </svg>
+              </div>
+              <div data-svg-wrapper class="left-[173.33px] top-[8.45px] absolute">
+                <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M6.81176 2.75066C7.10361 2.75066 7.3402 2.98725 7.3402 3.2791V7.50663C7.3402 7.79848 7.10361 8.03507 6.81176 8.03507H4.698C4.40615 8.03507 4.16956 7.79848 4.16956 7.50663V3.2791C4.16956 2.98725 4.40615 2.75066 4.698 2.75066L6.81176 2.75066Z"
+                    fill="white" />
+                  <path
+                    d="M3.11389 5.39289C3.40574 5.39289 3.64233 5.62948 3.64233 5.92133V7.50666C3.64233 7.79851 3.40574 8.0351 3.11389 8.0351L1.00012 8.0351C0.708271 8.0351 0.47168 7.79851 0.47168 7.50666L0.47168 5.92133C0.47168 5.62948 0.708271 5.39289 1.00012 5.39289H3.11389Z"
+                    fill="white" />
+                  <path
+                    d="M10.5094 0.636109C10.8012 0.636109 11.0378 0.8727 11.0378 1.16455L11.0378 7.50585C11.0378 7.7977 10.8012 8.03429 10.5094 8.03429H8.39563C8.10378 8.03429 7.86719 7.79769 7.86719 7.50584V1.16455C7.86719 0.8727 8.10378 0.636108 8.39563 0.636108L10.5094 0.636109Z"
+                    fill="white" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tablet Laptop Frame -->
+        <div
+          class="hidden tablet:block desktop:hidden w-[676.55px] h-[422.94px] left-1/2 -translate-x-1/2 -top-[60px] absolute bg-black shadow-[0px_-2.98px_14.92px_rgba(0,0,0,0.10)] overflow-hidden rounded-tl-[17.90px] rounded-tr-[17.90px] border-l-[1.49px] border-t-[1.49px] border-r-[1.49px] border-[#929292]">
+          <img class="w-[648.76px] h-[453.10px] left-[13.90px] top-[13.80px] absolute rounded-[11.93px]"
+            src="https://placehold.co/649x453" alt="Hero image" />
+        </div>
+
+        <!-- Desktop Monitor Frame -->
+        <div
+          class="hidden desktop:block w-[907px] h-[644px] left-1/2 -translate-x-1/2 -top-[141px] absolute bg-black shadow-[0px_-4px_20px_rgba(0,0,0,0.10)] overflow-hidden rounded-[24px] border-l-2 border-t-2 border-r-2 border-white/50">
+          <img class="w-[869.74px] h-[607.44px] left-[18.63px] top-[18.50px] absolute rounded-[16px]"
+            src="https://placehold.co/870x607" alt="Hero image" />
+        </div>
+      </div>
+      <!-- Hero Image OverFlow hiding div  -->
+    </div>
+
+    <!-- trusted by section -->
+    <div
+      class="w-full max-w-[1600px] px-0 tablet:px-0 desktop:max-w-[1500px] py-[50px] mx-auto flex flex-col justify-start items-center gap-[30px]">
+      <!-- Trusted by text -->
+      <div
+        class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px] text-left  tablet:text-left">
+        Trusted by:
+      </div>
+
+      <!-- Logo grid -->
+      <div class="self-stretch flex justify-center items-center gap-10 flex-wrap content-center">
+        <!-- Logo 1 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 overflow-hidden flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-1.png" alt="Company logo" />
+        </div>
+
+        <!-- Logo 2 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 overflow-hidden flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-2.png" alt="Company logo" />
+        </div>
+
+        <!-- Logo 3 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-3.png" alt="Company logo" />
+        </div>
+
+        <!-- Logo 4 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 overflow-hidden flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-4.png" alt="Company logo" />
+        </div>
+
+        <!-- Logo 5 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-5.png" alt="Company logo" />
+        </div>
+
+        <!-- Logo 6 -->
+        <div
+          class="w-[150px] desktop:w-[154px] h-[81.82px] desktop:h-[84px] p-5 overflow-hidden flex flex-col justify-center items-center gap-2.5">
+          <img
+            class="w-[110px] desktop:w-[114px] h-[41.82px] desktop:h-[44px] opacity-60 mix-blend-exclusion object-contain"
+            src="./public/images/Logo-6.png" alt="Company logo" />
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Trusted section end -->
+
+
+    <!-- We cracked Code section -->
+    <div
+      class="self-stretch pt-20 pb-[60px] border-t-[0.5px] border-[#E9E9E9] flex flex-col justify-start items-start gap-[50px] tablet:gap-[50px] desktop:gap-[50px]">
+      <!-- Header Content -->
+      <div
+        class="self-stretch pr-5 tablet:pr-[200px] desktop:pr-[400px] flex flex-col justify-start items-start gap-[30px] tablet:gap-[50px] desktop:gap-[50px]">
+        <!-- Benefits Label -->
+        <div
+          class="text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">
+          Benefits
+        </div>
+
+        <!-- Main Heading -->
+        <div
+          class="self-stretch text-black text-[50px] tablet:text-[54px] desktop:text-[60px] font-['Crimson_Text'] font-normal leading-[47.50px] tablet:leading-[48.60px] desktop:leading-[54px]">
+          We've cracked the code.
+        </div>
+
+        <!-- Description -->
+        <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+          Area provides real insights, without the data overload.
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div
+        class="self-stretch pt-10 flex tablet:inline-flex desktop:inline-flex justify-start desktop:justify-around items-start gap-5 flex-wrap tablet:flex-wrap desktop:flex-wrap content-start flex-col tablet:flex-row desktop:flex-row">
+
+        <!-- Feature 1: Amplify Insights -->
+        <div
+          class="w-[343px] h-[229px] tablet:w-[350px] tablet:h-[229px] desktop:w-[285px] desktop:h-[250px] pt-10 pb-10 pr-5 tablet:pr-5 desktop:pr-5 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-6">
+          <div data-svg-wrapper class="relative">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.05305 3.4998C5.68305 4.8798 5.68305 7.0998 7.05305 8.4698L15.543 16.9498C16.123 17.5398 16.123 18.4998 15.543 19.0698C14.953 19.6598 14.003 19.6598 13.413 19.0698L9.17305 14.8298L10.233 13.7698L6.70305 10.2298L6.34305 10.5898L4.93305 9.1698C4.54305 8.7798 3.91305 8.7798 3.50305 9.1698L2.10305 10.5898C1.71305 10.9998 1.71305 11.6098 2.10305 11.9998L3.50305 13.4098L3.16305 13.7698L6.70305 17.2998L7.76305 16.2398L12.003 20.4998C13.373 21.8498 15.583 21.8498 16.953 20.4998C18.323 19.1198 18.323 16.8998 16.953 15.5398L8.46305 7.0498C7.88305 6.4598 7.88305 5.4998 8.46305 4.9298C9.05305 4.3398 10.003 4.3398 10.593 4.9298L14.833 9.1698L13.773 10.2298L17.303 13.7698L17.663 13.4098L19.073 14.8298C19.463 15.2198 20.103 15.2198 20.503 14.8298L21.903 13.4098C22.293 12.9998 22.293 12.3898 21.903 11.9998L20.503 10.5898L20.843 10.2298L17.303 6.6998L16.243 7.7598L12.003 3.4998C10.633 2.1498 8.42305 2.1498 7.05305 3.4998ZM2.81305 11.2898L4.22305 9.8798L5.64305 11.2898L4.22305 12.7098M18.363 12.7098L19.783 11.2898L21.193 12.7098L19.783 14.1198L18.363 12.7098Z"
+                fill="black" />
+            </svg>
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-5">
+            <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+              Amplify Insights
+            </div>
+            <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Unlock data-driven decisions with comprehensive analytics, revealing key opportunities for strategic
+              regional growth.
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Control Your Global Presence -->
+        <div
+          class="w-[343px] h-[225px] tablet:w-[350px] tablet:h-[225px] desktop:w-[285px] desktop:h-[225px] pt-10 pb-10 pr-5 tablet:pr-5 desktop:pr-5 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-5 tablet:gap-6 desktop:gap-5">
+          <div data-svg-wrapper class="relative">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.9 17.39C17.64 16.59 16.89 16 16 16H15V13C15 12.7348 14.8946 12.4804 14.7071 12.2929C14.5196 12.1054 14.2652 12 14 12H8V10H10C10.2652 10 10.5196 9.89464 10.7071 9.70711C10.8946 9.51957 11 9.26522 11 9V7H13C13.5304 7 14.0391 6.78929 14.4142 6.41421C14.7893 6.03914 15 5.53043 15 5V4.59C17.93 5.77 20 8.64 20 12C20 14.08 19.2 15.97 17.9 17.39ZM11 19.93C7.05 19.44 4 16.08 4 12C4 11.38 4.08 10.78 4.21 10.21L9 15V16C9 16.5304 9.21071 17.0391 9.58579 17.4142C9.96086 17.7893 10.4696 18 11 18M12 2C10.6868 2 9.38642 2.25866 8.17317 2.7612C6.95991 3.26375 5.85752 4.00035 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C5.85752 19.9997 6.95991 20.7362 8.17317 21.2388C9.38642 21.7413 10.6868 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z"
+                fill="black" />
+            </svg>
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-5">
+            <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+              Control Your Global Presence
+            </div>
+            <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Manage and track satellite offices, ensuring consistent performance and streamlined operations everywhere.
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: Remove Language Barriers -->
+        <div
+          class="w-[343px] h-[229px] tablet:w-[350px] tablet:h-[229px] desktop:w-[285px] desktop:h-[250px] pt-10 pb-10 pr-10 tablet:pr-10 desktop:pr-10 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-6">
+          <div data-svg-wrapper class="relative">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9 5C10.0609 5 11.0783 5.42143 11.8284 6.17157C12.5786 6.92172 13 7.93913 13 9C13 10.0609 12.5786 11.0783 11.8284 11.8284C11.0783 12.5786 10.0609 13 9 13C7.93913 13 6.92172 12.5786 6.17157 11.8284C5.42143 11.0783 5 10.0609 5 9C5 7.93913 5.42143 6.92172 6.17157 6.17157C6.92172 5.42143 7.93913 5 9 5ZM9 15C11.67 15 17 16.34 17 19V21H1V19C1 16.34 6.33 15 9 15ZM16.76 5.36C18.78 7.56 18.78 10.61 16.76 12.63L15.08 10.94C15.92 9.76 15.92 8.23 15.08 7.05L16.76 5.36ZM20.07 2C24 6.05 23.97 12.11 20.07 16L18.44 14.37C21.21 11.19 21.21 6.65 18.44 3.63L20.07 2Z"
+                fill="black" />
+            </svg>
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-5">
+            <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+              Remove Language Barriers
+            </div>
+            <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Adapt to diverse markets with built-in localization for clear communication and enhanced user experience.
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 4: Visualize Growth -->
+        <div
+          class="w-[343px] h-[229px] tablet:w-[350px] tablet:h-[229px] desktop:w-[285px] desktop:h-[250px] pt-10 pb-10 pr-10 tablet:pr-10 desktop:pr-10 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-6">
+          <div data-svg-wrapper class="relative">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M3 14L3.5 14.07L8.07 9.5C7.89 8.85 8.06 8.11 8.59 7.59C9.37 6.8 10.63 6.8 11.41 7.59C11.94 8.11 12.11 8.85 11.93 9.5L14.5 12.07L15 12C15.18 12 15.35 12 15.5 12.07L19.07 8.5C19 8.35 19 8.18 19 8C19 7.46957 19.2107 6.96086 19.5858 6.58579C19.9609 6.21071 20.4696 6 21 6C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8C23 8.53043 22.7893 9.03914 22.4142 9.41421C22.0391 9.78929 21.5304 10 21 10C20.82 10 20.65 10 20.5 9.93L16.93 13.5C17 13.65 17 13.82 17 14C17 14.5304 16.7893 15.0391 16.4142 15.4142C16.0391 15.7893 15.5304 16 15 16C14.4696 16 13.9609 15.7893 13.5858 15.4142C13.2107 15.0391 13 14.5304 13 14L13.07 13.5L10.5 10.93C10.18 11 9.82 11 9.5 10.93L4.93 15.5L5 16C5 16.5304 4.78929 17.0391 4.41421 17.4142C4.03914 17.7893 3.53043 18 3 18C2.46957 18 1.96086 17.7893 1.58579 17.4142C1.21071 17.0391 1 16.5304 1 16C1 15.4696 1.21071 14.9609 1.58579 14.5858C1.96086 14.2107 2.46957 14 3 14Z"
+                fill="black" />
+            </svg>
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-5">
+            <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+              Visualize Growth
+            </div>
+            <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Generate precise, visually compelling reports that illustrate your growth trajectories across all regions.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Landscape Image Section -->
+    <div class="w-full flex justify-center desktop:pb-[120px] tablet:pb-[120px] pb-[100px]">
+      <img
+        class="w-full max-w-[343px] tablet:max-w-[720px] desktop:max-w-[1200px] h-[600px] tablet:h-[600px] desktop:h-[620px] rounded-[30px] object-cover"
+        src="./public/images/mountains.jpg" alt="Landscape showcase" />
+    </div>
+    <!-- padding div -->
+  </div>
+
+  <!-- New div for padding-40 in desktop and tablet -->
+  <div class=" pb-[20px] desktop:px-[40px] desktop:pb-[20px] tablet:px-[40px] tablet:pb-[20px] tablet:max-w-[800px] tablet:mx-auto desktop:max-w-[1500px] desktop:mx-auto ">
+
+    <!-- See the Big Picture section -->
+    <div
+      class="w-full max-w-[1500px] mx-auto px-[32px] desktop:px-0 tablet:px-0  pb-20 tablet:pb-[120px] desktop:pb-[120px] flex flex-col desktop:flex-row justify-start items-start gap-5 desktop:gap-5">
+
+      <!-- Left Content -->
+      <div class="flex-1 pt-[60px] pb-20 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-10">
+
+        <!-- Header Text -->
+        <div class="self-stretch pr-0 tablet:pr-20 desktop:pr-20 flex flex-col justify-start items-start gap-10">
+          <div
+            class="self-stretch text-black text-[50px] tablet:text-[54px] desktop:text-[60px] font-['Crimson_Text'] font-normal leading-[47.50px] tablet:leading-[48.60px] desktop:leading-[54px]">
+            See the Big Picture
+          </div>
+          <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+            Area turns your data into clear, vibrant visuals that show you exactly what's happening in each region.
+          </div>
+        </div>
+
+        <!-- Features List -->
+        <div class="self-stretch flex flex-col justify-start items-start">
+
+          <!-- Feature 1 -->
+          <div
+            class="self-stretch desktop:py-[19.5px] py-5 pr-0 tablet:pr-20 desktop:pr-20 border-t border-[#E9E9E9] flex justify-center items-start gap-[30px]">
+            <div class="text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-bold leading-[21px]">
+              01
+            </div>
+            <div class="flex-1 text-black text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Spot Trends in Seconds: No more digging through numbers.
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="self-stretch desktop:py-[20px] py-5 pr-0 tablet:pr-20 desktop:pr-20 border-t border-[#E9E9E9] flex justify-center items-start gap-[30px]">
+            <div class="text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-bold leading-[21px]">
+              02
+            </div>
+            <div class="flex-1 text-black text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Get Everyone on the Same Page: Share easy-to-understand reports with your team.
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="self-stretch desktop:py-[20px] py-5 pr-0 tablet:pr-20 desktop:pr-20 border-t border-[#E9E9E9] flex justify-center items-start gap-[30px]">
+            <div class="text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-bold leading-[21px]">
+              03
+            </div>
+            <div class="flex-1 text-black text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Make Presentations Pop: Interactive maps and dashboards keep your audience engaged.
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="self-stretch desktop:py-[20px] py-5 pr-0 tablet:pr-20 desktop:pr-20 border-t border-[#E9E9E9] flex justify-center items-start gap-[30px]">
+            <div class="text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-bold leading-[21px]">
+              04
+            </div>
+            <div class="flex-1 text-black text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+              Your Global Snapshot: Get a quick, clear overview of your entire operation.
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <button
+          class="px-[22px] py-3.5 bg-[#DFECC6] rounded-full flex flex-col justify-center items-center gap-2.5 hover:bg-[#D0E5B0] transition-colors">
+          <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+            Discover More
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Right Image -->
+      <div class="flex-1 w-full max-w-[1600px] flex flex-col justify-start items-start gap-5">
+        <div
+          class="self-stretch h-[385px] tablet:h-[744px] desktop:h-[711px] rounded-[30px] flex items-center justify-center">
+          <img class="w-full h-full object-cover rounded-[30px]" src="./public/images/big-picture.jpg"
+            alt="Big Picture Visualization" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- See the Big Picture section End -->
+
+<div class="w-full max-w-[1500px] mx-auto pb-[120px] overflow-hidden flex flex-col justify-start items-start gap-5">
+<!-- Why Choose Area section -->
+<div class="self-stretch px-4 tablet:px-20 desktop:px-60 py-20 tablet:py-[81.5px] desktop:py-[81px] border-t border-neutral-400 inline-flex flex-col justify-start items-center gap-10 tablet:gap-[38px] desktop:gap-10 desktop:max-h-[441px]">
+  <div class="self-stretch flex flex-col justify-start items-center gap-7 tablet:gap-10 desktop:gap-10">
+    
+    <!-- Specs Label -->
+<div class="self-stretch text-center text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-normal font-['Roboto_Mono'] leading-[15px] tablet:leading-[15px] desktop:leading-[17px]">
+  Specs
+</div>
+    <!-- Heading -->
+    <div class="self-stretch text-center text-black text-[50px] tablet:text-[54px] desktop:text-[60px] font-normal font-['Crimson_Text'] leading-[47.50px] tablet:leading-[48.60px] desktop:leading-[54px]">
+      Why Choose Area?
+    </div>
+    
+    <!-- Description -->
+<div class="self-stretch text-center text-[#6F6F6F] text-[15px] font-normal font-['DM_Sans'] leading-[21px]">
+  You need a solution that keeps up. That's why we developed Area. A developer-friendly approach to streamline your business.
+</div>
+    
+    <!-- CTA Button -->
+<div data-type="Primary" class="px-[22px] py-3.5 bg-[#DFECC6] rounded-full inline-flex flex-col justify-center items-center gap-2.5 hover:bg-[#D0E5B0] transition-colors cursor-pointer">
+  <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+    Discover More
+  </div>
+</div>
+    
+  </div>
+</div>
+<!-- Why Choose Area Table -->
+<!-- Why Choose Area Comparison Table -->
+
+  
+  <!-- Table Container -->
+  <div class="self-stretch px-2 tablet:px-0.5 desktop:px-0 overflow-x-auto rounded-[20px] flex justify-start items-start">
+    
+    <!-- Column 1: Area (Highlighted) -->
+    <div class="flex-1 min-w-[200px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.08)] overflow-hidden rounded-[20px] border border-[#E9E9E9] flex flex-col justify-start items-start">
+      
+      <!-- Header -->
+      <div class="self-stretch h-24 px-[30px] py-10 border-b border-[#929292] flex justify-center items-start gap-4">
+        <div class="text-black text-[25.71px] font-['DM_Sans'] font-medium leading-[30.86px]">Area</div>
+      </div>
+      
+      <!-- Feature Rows -->
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Ultra-fast browsing</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Advanced AI insights</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Seamless integration</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Advanced AI insights</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Ultra-fast browsing</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[30px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#485C11"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Full UTF-8 support</div>
+      </div>
+      
+    </div>
+    
+    <!-- Column 2: WebSurge -->
+    <div class="flex-1 min-w-[200px] flex flex-col justify-start items-start">
+      
+      <!-- Header -->
+      <div class="self-stretch h-24 px-[30px] py-10 border-b border-[#929292] flex justify-center items-start gap-4">
+        <div class="text-[#6F6F6F] text-[22.86px] font-['Rethink_Sans'] font-medium leading-[27.43px]">WebSurge</div>
+      </div>
+      
+      <!-- Feature Rows -->
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Fast browsing</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Basic AI recommendations</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Restricts customization</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.85175 7.49984L11.0834 10.7315V11.5832H10.2317L7.00008 8.3515L3.76841 11.5832H2.91675V10.7315L6.14841 7.49984L2.91675 4.26817V3.4165H3.76841L7.00008 6.64817L10.2317 3.4165H11.0834V4.26817L7.85175 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Basic AI insights</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.2501 4.58324L5.25008 11.5832L2.04175 8.37491L2.86425 7.55241L5.25008 9.93241L11.4276 3.76074L12.2501 4.58324Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Fast browsing</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.85175 7.49984L11.0834 10.7315V11.5832H10.2317L7.00008 8.3515L3.76841 11.5832H2.91675V10.7315L6.14841 7.49984L2.91675 4.26817V3.4165H3.76841L7.00008 6.64817L10.2317 3.4165H11.0834V4.26817L7.85175 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Potential display errors</div>
+      </div>
+      
+    </div>
+    
+    <!-- Column 3: HyperView -->
+    <div class="flex-1 min-w-[200px] flex flex-col justify-start items-start">
+      
+      <!-- Header -->
+      <div class="self-stretch h-24 px-[30px] py-10 border-b border-[#929292] flex justify-center items-start gap-4">
+        <div class="text-[#6F6F6F] text-[21.65px] font-['Reddit_Mono'] font-medium leading-[25.98px]">HyperView</div>
+      </div>
+      
+      <!-- Feature Rows -->
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.50008L11.0832 10.7317V11.5834H10.2315L6.99984 8.35175L3.76817 11.5834H2.9165V10.7317L6.14817 7.50008L2.9165 4.26841V3.41675H3.76817L6.99984 6.64841L10.2315 3.41675H11.0832V4.26841L7.8515 7.50008Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Moderate speeds</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.49984L11.0832 10.7315V11.5832H10.2315L6.99984 8.3515L3.76817 11.5832H2.9165V10.7315L6.14817 7.49984L2.9165 4.26817V3.4165H3.76817L6.99984 6.64817L10.2315 3.4165H11.0832V4.26817L7.8515 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">No AI assistance</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.49984L11.0832 10.7315V11.5832H10.2315L6.99984 8.3515L3.76817 11.5832H2.9165V10.7315L6.14817 7.49984L2.9165 4.26817V3.4165H3.76841L6.99984 6.64817L10.2315 3.4165H11.0832V4.26817L7.8515 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Steep learning curve</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.49984L11.0832 10.7315V11.5832H10.2315L6.99984 8.3515L3.76817 11.5832H2.9165V10.7315L6.14817 7.49984L2.9165 4.26817V3.4165H3.76817L6.99984 6.64817L10.2315 3.4165H11.0832V4.26817L7.8515 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">No AI assistance</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.49984L11.0832 10.7315V11.5832H10.2315L6.99984 8.3515L3.76817 11.5832H2.9165V10.7315L6.14817 7.49984L2.9165 4.26817V3.4165H3.76817L6.99984 6.64817L10.2315 3.4165H11.0832V4.26817L7.8515 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Moderate speeds</div>
+      </div>
+      
+      <div class="self-stretch px-5 tablet:px-[20px] desktop:px-[30px] py-8 border-l-[0.5px] border-b-[0.5px] border-[#E9E9E9] flex justify-start items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.8515 7.49984L11.0832 10.7315V11.5832H10.2315L6.99984 8.3515L3.76817 11.5832H2.9165V10.7315L6.14817 7.49984L2.9165 4.26817V3.4165H3.76817L6.99984 6.64817L10.2315 3.4165H11.0832V4.26817L7.8515 7.49984Z" fill="#6F6F6F"/>
+        </svg>
+        <div class="text-black text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">Partial UTF-8 support</div>
+      </div>
+      
+    </div>
+    
+  </div>
+  <!-- table end -->
+</div>
+<!-- Why Choose Area Comparison Table End -->
+
+<!-- Testimonial Section Start -->
+<div class="w-full max-w-[1500px] pb-[100px] tablet:pb-[120px] desktop:pb-[120px] px-4 tablet:px-0 desktop:px-0 flex flex-col desktop:flex-row justify-start desktop:justify-start items-start gap-10 tablet:gap-10 desktop:gap-5">
+  
+  <!-- Testimonial Image -->
+<img 
+  class="w-[343px] mx-auto tablet:w-[720px] h-[343px] tablet:h-[720px] desktop:w-[590px]  desktop:h-[669.38px] rounded-[30px] object-cover" 
+  src="https://placehold.co/590x669" 
+  alt="Testimonial" 
+/>
+  
+  <!-- Testimonial Content -->
+  <div class="flex-1 self-stretch pt-10 tablet:pt-0 desktop:pt-0 px-4 tablet:px-0 desktop:pl-[50px] desktop:pr-0 border-t border-[#E9E9E9] flex flex-col justify-center items-start gap-[50px]">
+    
+    <!-- Quote -->
+    <div class="self-stretch text-black text-[32px] tablet:text-[40px] desktop:text-[40px] font-['Crimson_Text'] font-normal leading-[35.20px] tablet:leading-[44px] desktop:leading-[42px]">
+      "I was skeptical, but Area has completely transformed the way I manage my business. The data visualizations are so clear and intuitive, and the platform is so easy to use. I can't imagine running my company without it."
+    </div>
+    
+    <!-- Author Info -->
+    <div class="self-stretch flex flex-col tablet:flex-row desktop:flex-col justify-start items-start tablet:items-center desktop:items-start gap-2 tablet:gap-2 desktop:gap-2">
+      <div class="text-black text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+        John Smith
+      </div>
+      <div class="text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">
+        Head of Data
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+<!-- Testimonial Section End -->
+<!-- extra padding end for desktop and tablet only -->
+
+<!-- Map your success section start -->
+<div class="w-full max-w-[1500px] pt-20 pb-[100px] tablet:pb-[120px] desktop:pb-[120px] px-4 tablet:px-0 desktop:px-0 border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-20">
+  
+  <!-- Header Section -->
+  <div class="self-stretch flex flex-col tablet:flex-row desktop:flex-row justify-start tablet:justify-between desktop:justify-between items-start gap-10 tablet:gap-0 desktop:gap-0">
+    
+    <!-- Title -->
+    <div class="text-black text-[50px] tablet:text-[54px] desktop:text-[60px] font-['Crimson_Text'] font-normal leading-[47.50px] tablet:leading-[48.60px] desktop:leading-[54px]">
+      Map Your Success
+    </div>
+    
+    <!-- CTA Button -->
+    <div class="px-[22px] py-3.5 bg-[#DFECC6] rounded-full flex flex-col justify-center items-center gap-2.5 hover:bg-[#D0E5B0] transition-colors cursor-pointer">
+      <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+        Discover More
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Steps Grid -->
+  <div class="self-stretch overflow-x-auto tablet:overflow-visible flex justify-start tablet:justify-start desktop:justify-center items-start gap-5">
+    
+    <!-- Step 01 -->
+    <div class="flex-1 min-w-[240px] pt-[60px] pb-5 pr-[30px] border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-[60px]">
+      
+      <!-- Number -->
+      <div class="self-stretch text-[#929292] text-[64px] tablet:text-[80px] desktop:text-[80px] font-['DM_Sans'] font-normal leading-[64px] tablet:leading-[80px] desktop:leading-[80px]">
+        01
+      </div>
+      
+      <!-- Content -->
+      <div class="self-stretch flex flex-col justify-start items-start gap-5">
+        <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+          Get Started
+        </div>
+        <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+          With our intuitive setup, you're up and running in minutes.
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Step 02 -->
+    <div class="flex-1 min-w-[240px] pt-[60px] pb-5 pr-[30px] border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-[60px]">
+      
+      <!-- Number -->
+      <div class="self-stretch text-[#929292] text-[64px] tablet:text-[80px] desktop:text-[80px] font-['DM_Sans'] font-normal leading-[64px] tablet:leading-[80px] desktop:leading-[80px]">
+        02
+      </div>
+      
+      <!-- Content -->
+      <div class="self-stretch flex flex-col justify-start items-start gap-5">
+        <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+          Customize and Configure
+        </div>
+        <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+          Adapt Area to your specific requirements and preferences.
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Step 03 -->
+    <div class="flex-1 min-w-[240px] pt-[60px] pb-5 pr-[30px] border-t border-[#E9E9E9] flex flex-col justify-start items-start gap-[60px]">
+      
+      <!-- Number -->
+      <div class="self-stretch text-[#929292] text-[64px] tablet:text-[80px] desktop:text-[80px] font-['DM_Sans'] font-normal leading-[64px] tablet:leading-[80px] desktop:leading-[80px]">
+        03
+      </div>
+      
+      <!-- Content -->
+      <div class="self-stretch flex flex-col justify-start items-start gap-5">
+        <div class="self-stretch text-black text-[18px] font-['Crimson_Text'] font-normal leading-[18px]">
+          Grow Your Business
+        </div>
+        <div class="self-stretch text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+          Make informed decisions to exceed your goals.
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>
+<!-- Map your success section end -->
+
+<!-- Green Mountains Image section -->
+<div class="self-stretch pb-10 flex flex-col justify-start items-center tablet:items-start desktop:items-center gap-2.5">
+  <div class="w-full h-[600px] tablet:h-[664.29px] desktop:h-[664.29px] max-w-[1500px] max-h-[830.36px] overflow-hidden rounded-[30px] flex justify-start items-start tablet:items-center desktop:items-start gap-2.5">
+    <img 
+      class=" w-[343px] mx-auto tablet:w-[720px] desktop:w-[1200px] h-[600px] tablet:h-[664.29px] desktop:h-[664.29px]  rounded-[30px] object-cover" 
+      src="./public/images/landscape.jpg" 
+      alt="Green Mountains" 
+    />
+  </div>
+</div>
+<!-- Green Mountains Image section end -->
+
+<!-- Connect With Us section start -->
+<div class="w-full max-w-[1500px] px-4 tablet:px-[100px] desktop:px-[300px] pt-[120px] pb-[120px] border-t-[0.5px] border-[#E9E9E9] flex flex-col justify-start items-center gap-10">
+  
+  <!-- Heading -->
+  <div class="self-stretch text-center text-black text-[50px] tablet:text-[54px] desktop:text-[60px] font-['Crimson_Text'] font-normal leading-[47.50px] tablet:leading-[48.60px] desktop:leading-[54px]">
+    Connect with us
+  </div>
+  
+  <!-- Description -->
+  <div class="self-stretch text-center text-[#6F6F6F] text-[15px] font-['DM_Sans'] font-normal leading-[21px]">
+    Schedule a quick call to learn how Area can turn your regional data into a powerful advantage.
+  </div>
+  
+  <!-- CTA Button -->
+  <div class="self-stretch px-[22px] py-3.5 bg-[#485C11] rounded-full flex justify-center items-center gap-0.5 hover:bg-[#3A4A0D] transition-colors cursor-pointer">
+    <div class="text-center text-white text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+      Learn More
+    </div>
+    <div data-svg-wrapper class="flex items-center justify-center">
+      <svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.51037 12.655V8.71346L6.14939 8.75304L1.23516 13.6729L0.5 12.9378L5.41423 8.02354L5.46513 8.66256H1.5066V7.66162L6.5 7.67293V12.655H5.51037Z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+  
+</div>
+<!-- Connect With Us section end -->
+
+<!-- Footer section start -->
+<div class="w-full max-w-[1500px] pt-10 pb-5 px-4 tablet:px-0 desktop:px-0 border-t border-[#E9E9E9] flex flex-col justify-end items-start gap-20">
+  
+  <!-- Top Section: Navigation Links -->
+  <div class="self-stretch h-auto tablet:h-10 desktop:h-10 flex flex-col tablet:flex-row desktop:flex-row justify-start tablet:justify-between desktop:justify-between items-start tablet:items-center desktop:items-center gap-[27px] tablet:gap-0 desktop:gap-0">
+    <div class="flex flex-col tablet:flex-row desktop:flex-row justify-start items-start tablet:items-center desktop:items-center gap-[27px]">
+      <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+        Benefits
+      </div>
+      <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+        Specifications
+      </div>
+      <div class="text-center text-black text-sm font-['DM_Sans'] font-bold leading-[19.60px]">
+        How-to
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom Section: Logo and Copyright -->
+  <div class="self-stretch flex justify-start items-end gap-10">
+    
+    <!-- Logo -->
+    <div class="flex justify-start items-end gap-[8.97px]">
+      <div data-svg-wrapper class="relative">
+        <svg width="32" height="71" viewBox="0 0 32 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.3379 22.2544L31.751 33.3423L27.9258 36.5796L22.3379 29.98V45.6675H24.8379V70.6675H19.8379V45.6675H17.3379V15.6675H22.3379V22.2544ZM12.4248 45.6665L7.83789 70.6665H2.75L7.33789 45.6665H12.4248ZM4.6748 36.5552L0 34.7798L7.22461 15.6675H12.5752L4.6748 36.5552ZM17.3389 10.6177H12.3389V0.66748H17.3389V10.6177Z" fill="black"/>
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Copyright Info -->
+    <div class="flex-1 flex justify-start items-center gap-4">
+      <div class="flex justify-center flex-col text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">
+        © Area.
+      </div>
+      <div class="flex justify-center flex-col text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">
+        2025
+      </div>
+    </div>
+    
+    <!-- Rights Reserved -->
+    <div class="flex justify-center flex-col text-[#485C11] text-[10.5px] tablet:text-[11px] desktop:text-[12px] font-['Roboto_Mono'] font-normal leading-[14.70px] tablet:leading-[15.40px] desktop:leading-[16.80px]">
+      All Rights Reserved
+    </div>
+    
+  </div>
+  
+</div>
+<!-- Footer section end -->
+
+<!-- desktop and tablet padding on left and right  -->
+</div>
+
+
+  </div>
+
+  <!-- JS for burger toggle -->
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const menu = document.getElementById("menu");
+    const navbar = document.getElementById("navbar");
+
+    burgerBtn.addEventListener("click", () => {
+      const isOpen = navbar.getAttribute("data-nav") === "open";
+      navbar.setAttribute("data-nav", isOpen ? "closed" : "open");
+      menu.classList.toggle("hidden");
+
+      // Toggle height
+      if (isOpen) {
+        navbar.style.height = "78px";
+      } else {
+        navbar.style.height = "auto";
+      }
+    });
+  </script>
+</body>
+
+</html>
